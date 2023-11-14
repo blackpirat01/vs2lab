@@ -1,0 +1,32 @@
+3.1
+Client + Server: 
+    Sobald der Server gestartet wird, sendet der client 3 mal die Nachricht "Hello world". 
+    Der Server antwortet jeweils mit Hello world* [x] time.
+
+Client + Client1 + Server:
+    Sobald der Server gestartet wird, senden die clients ihre nachrichten, der server antwortet nach dem obigen schema
+    - Die Nachrichten kommen immer als packet an (alle 3 von clientx, dann alle 3 von clienty)
+    - Die Reihenfolge der "Nachrichtenpakete" (jeweils die 3 Nachrichten + Antwort) ist immer gleich (1., 2., dann 3.).
+    - Die Reihenfolge, wessen Nachrichtenpacket zuerst ankommt, wechselt unregelmäßig. (mal client zuerst, mal client1).
+
+
+3.2
+Client + Client + Server:
+    Für 5 iterationen geben die clients im 5-sekunden-abstand die Zeit aus (die sie vom server bekommen.).
+    Dabei wird die Zeit zwischen den ausgaben vom Server festgelegt, die Anzahl vom Client.
+    (Daher, dass Server in einer endlosschleife läuft und jede iteration 5 sek wartet, der client aber nur 5 mal abfragt.)
+
+Client + Client1 + Server
+    Client verhält sich wie oben.
+    Client1 gibt statt der Zeit das Datum aus, und nur 3 mal (statt 5 wie client).
+
+3.3
+src 1 + src 2 + work
+    Nachdem "taskwork" gestartet wurde, terminieren beide tasksrc programme.
+    taskwork gibt die größe der workloads und die quellen aus.
+    die quelle (1/2) scheint sich immer abzuwechseln, die größe der workloads ist zufällig
+    Nach einer weile stoppt die Ausgabe, das worker programm läuft aber weiter.
+
+work 1 + work 2 + src
+    nachdem tasksrc gestartet wird, beginnen beide taskwork jeweils die workloads auszugeben.
+    Wenn ein worker mehrere "kleine" arbeitspakete erhält, kann er diese logischerweise auch schneller abarbeiten -> die worker wechseln sich nicht ab, sondern der der Kapazität hat arbeitet.
